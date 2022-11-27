@@ -160,6 +160,21 @@ class HBNBCommand(cmd.Cmd):
                     return
                 else:
                     print("** no instance found **")
+    
+    def default(self, args):
+        command = {
+            'all()': "do_all"
+        }
+        tokens = args.split('.', 1)
+        if tokens[0] not in class_list:
+            print("** class doesn't exist **")
+        
+        elif tokens[1] not in command:
+            print("** command doesn't exist **")
+        
+        else:
+            eval('self.{}("{}")'.format(command[tokens[1]], tokens[0]))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
