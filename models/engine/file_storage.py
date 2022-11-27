@@ -4,30 +4,29 @@ Creates a class FileStorage
 '''
 import json
 from models.base_model import BaseModel
+import models
 
 class FileStorage:
     '''
     Class that serializes instance to JSON file and
     deserializes JSON file to instance
     '''
-    def __init__(self):
-        '''
-        Initialize
-        '''
-        self.__file_path = "file.json"
-        self.__objects = {}
+
+    __file_path = "file.json"
+    __objects = {}
     
     def all(self):
         '''
         returns the dictionary __objects
         '''
-        return self.__objects
+        return type(self).__objects
 
     def new(self, obj):
         '''
         sets in __objects the obj with key <obj class name>.id
         '''
-        self.__objects[obj.__class__.__name__] = obj
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        type(self).__objects[key] = obj
 
     def save(self):
         '''
@@ -45,6 +44,9 @@ class FileStorage:
         '''
         try:
             with open(self.__file_path, "r") as file:
-                self.__objects = json.load(file)
+                obj = json.load(file)
+                for key, value in obj.items():
+                    val = models.class_list[value["__class__"]](**value)
+                    self.__objects[key] = val
         except:
             pass
