@@ -7,7 +7,6 @@ import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import class_list, storage
-import models
 
 class HBNBCommand(cmd.Cmd):
     '''
@@ -33,18 +32,6 @@ class HBNBCommand(cmd.Cmd):
         '''
         pass
 
-    def help_EOF(self):
-        '''
-        Defines the help for EOF
-        '''
-        print ('EOF command to exit the program\n')
-    
-    def help_quit(self):
-        '''
-        Defines the help for quit command
-        '''
-        print ('Quit command to exit the program\n')
-    
     def do_create(self, args):
         '''
         Create new instance of BaseModel
