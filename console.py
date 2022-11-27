@@ -163,7 +163,9 @@ class HBNBCommand(cmd.Cmd):
     
     def default(self, args):
         command = {
-            'all()': "do_all"
+            'all()': "do_all",
+            'count()': "do_count",
+            'create()': "do_create"
         }
         tokens = args.split('.', 1)
         if tokens[0] not in class_list:
@@ -174,7 +176,15 @@ class HBNBCommand(cmd.Cmd):
         
         else:
             eval('self.{}("{}")'.format(command[tokens[1]], tokens[0]))
-
+    
+    def do_count(self, args):
+        count = 0
+        objects = storage.all()
+        for key, value in objects:
+            temp = key.split('.', 1)
+            if temp[0] == args:
+                count += 1
+        print(count)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
