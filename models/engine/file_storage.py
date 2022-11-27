@@ -6,6 +6,7 @@ import json
 from models.base_model import BaseModel
 import models
 
+
 class FileStorage:
     '''
     Class that serializes instance to JSON file and
@@ -14,7 +15,7 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    
+
     def all(self):
         '''
         returns the dictionary __objects
@@ -48,5 +49,5 @@ class FileStorage:
                 for key, value in obj.items():
                     val = models.class_list[value["__class__"]](**value)
                     self.__objects[key] = val
-        except:
+        except FileNotFoundError:
             pass

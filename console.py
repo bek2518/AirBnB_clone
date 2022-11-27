@@ -8,6 +8,7 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import class_list, storage
 
+
 class HBNBCommand(cmd.Cmd):
     '''
     class definition
@@ -19,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
         Quit the program when EOF
         '''
         return True
-    
+
     def do_quit(self, args):
         '''
         Quit the program when quit passed
@@ -64,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
 
         elif len(args) == 1 or args[1] == "":
             print("** instance id is missing **")
-        
+
         else:
             key = args[0] + "." + args[1]
             if key in storage.all():
@@ -85,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
 
         elif len(args) == 1 or args[1] == "":
             print("** instance id is missing **")
-        
+
         else:
             key = args[0] + "." + args[1]
             if key in storage.all():
@@ -93,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
             else:
                 print("** no instance found **")
-    
+
     def do_all(self, args):
         '''
         Prints all representation of all instances
@@ -115,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
                 print(value_list)
             else:
                 print("** class doesn't exist **")
-    
+
     def do_update(self, args):
         '''
         Updates an instance based on the class name and id
@@ -136,10 +137,10 @@ class HBNBCommand(cmd.Cmd):
 
         elif len(args) == 2 or args[2] == "":
             print("** attribute name missing **")
-        
+
         elif len(args) == 3 or args[3] == "":
             print("** value missing **")
-        
+
         else:
             for key, value in objects.items():
                 if key == existing_key:
@@ -160,7 +161,7 @@ class HBNBCommand(cmd.Cmd):
                     return
                 else:
                     print("** no instance found **")
-    
+
     def default(self, args):
         command = {
             'all()': "do_all",
@@ -170,13 +171,13 @@ class HBNBCommand(cmd.Cmd):
         tokens = args.split('.', 1)
         if tokens[0] not in class_list:
             print("** class doesn't exist **")
-        
+
         elif tokens[1] not in command:
             print("** command doesn't exist **")
-        
+
         else:
             eval('self.{}("{}")'.format(command[tokens[1]], tokens[0]))
-    
+
     def do_count(self, args):
         count = 0
         objects = storage.all()
@@ -185,6 +186,7 @@ class HBNBCommand(cmd.Cmd):
             if temp[0] == args:
                 count += 1
         print(count)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
