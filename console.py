@@ -4,6 +4,7 @@ Program that contains an entry point of
 the command interpreter
 '''
 import cmd
+from datetime import datetime
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import class_list, storage
@@ -145,17 +146,8 @@ class HBNBCommand(cmd.Cmd):
                 existing_key = args[0] + "." + args[1]
                 if key == existing_key:
                     attribute = args[3].split('"')
-                    try:
-                        int(attribute[1])
-                        return (int)
-                    except ValueError:
-                        pass
-                    try:
-                        float(attribute[1])
-                        return (float)
-                    except ValueError:
-                        return (str)
-                    objects[existing_key].__dict__[args[2]] = (t)(arrtibute[1])
+                    t = value_type(attribute[1])
+                    objects[existing_key].__dict__[args[2]] = (t)(attribute[1])
                     objects[existing_key].updated_at = datetime.now()
                     storage.save()
                     return
@@ -186,6 +178,21 @@ class HBNBCommand(cmd.Cmd):
             if temp[0] == args:
                 count += 1
         print(count)
+
+def value_type(value):
+    '''
+    Determines the value type
+    '''
+    try:
+        int(value)
+        return (int)
+    except ValueError:
+        pass
+    try:
+        float(value)
+        return (float)
+    except ValueError:
+        return (str)
 
 
 if __name__ == '__main__':
