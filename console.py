@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
         elif len(args) == 1 or args[1] == "":
-            print("** instance id is missing **")
+            print("** instance id missing **")
 
         else:
             key = args[0] + "." + args[1]
@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
         elif len(args) == 1 or args[1] == "":
-            print("** instance id is missing **")
+            print("** instance id missing **")
 
         else:
             key = args[0] + "." + args[1]
