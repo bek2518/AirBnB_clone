@@ -179,6 +179,7 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
 
+
 def value_type(value):
     '''
     Determines the value type
