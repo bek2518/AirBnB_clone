@@ -156,19 +156,29 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, args):
         command = {
-            'all()': "do_all",
-            'count()': "do_count",
-            'create()': "do_create"
+            'all': self.do_all,
+            'count': self.do_count,
+            'show': self.do_show,
+            'destroy': self.do_destroy,
+            'update': self.do_update
         }
-        tokens = args.split('.', 1)
-        if tokens[0] not in class_list:
+        args = args.replace("(", ".")
+        args = args.replace(")", ".")
+        args = args.replace('"', "")
+        args = args.replace(",", "")
+        args = args.split(".")
+
+
+        if args[0] not in class_list:
             print("** class doesn't exist **")
 
-        elif tokens[1] not in command:
+        elif args[1] not in command:
             print("** command doesn't exist **")
 
         else:
-            eval('self.{}("{}")'.format(command[tokens[1]], tokens[0]))
+            cmd_arg = args[0] + " " + args[2]
+            cmd = command[args[1]]
+            cmd(cmd_arg)
 
     def do_count(self, args):
         count = 0
