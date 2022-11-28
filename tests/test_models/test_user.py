@@ -37,7 +37,7 @@ class TestUser(unittest.TestCase):
     
     def test_user_first_name(self):
         new_user = User()
-        last_name = getattr(new_user, "lasrt_name")
+        last_name = getattr(new_user, "last_name")
         self.assertIsInstance(last_name, str)
 
 

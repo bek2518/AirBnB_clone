@@ -13,15 +13,19 @@ class TestFileStorage(unittest.TestCase):
     '''
     Tests Filestorage class
     '''
-
+    @classmethod
+    def setup(cls):
+        cls.user = User()
+        cls.user.first_name = "Betty"
+        cls.user.last_name = "Bog"
+        cls.user.email = "airbnb@mail.com"
+        cls.user.password = "root"
     def test_FileStorage(self):
         '''
         Test for attributes of FileStorage
         '''
         fs = FileStorage()
         self.assertIsInstance(fs, FileStorage)
-        self.assertTrue(hasattr(fs, "__file_path"))
-        self.assertTrue(hasattr(fs, "__objects"))
 
     def test_FileStorage_all(self):
         '''
@@ -35,6 +39,7 @@ class TestFileStorage(unittest.TestCase):
         '''
         Tests new() method
         '''
+        self.setup()
         fs = FileStorage()
         fs.new(self.user)
         self.assertIsNotNone(fs.all())
@@ -42,10 +47,8 @@ class TestFileStorage(unittest.TestCase):
     def test_FileStorage_save(self):
         '''
         Tests save() method'''
-        bm = BaseModel
         fs = FileStorage
-        fs.new(bm)
-        fs.save()
+        fs.save(fs)
         self.assertEqual(os.path.exists('file.json'), True)
 
     def test_FileStorage_reload(self):
@@ -57,7 +60,7 @@ class TestFileStorage(unittest.TestCase):
         fs.new(bm)
         fs.save()
         dictionary = fs.reload()
-        self.assertTrue(dictionary is fs.reload)
+        self.assertTrue(dictionary is fs.reload())
 
 if __name__ == '__main__':
     unittest.main()

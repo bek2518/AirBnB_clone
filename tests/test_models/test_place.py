@@ -53,7 +53,7 @@ class TestPlace(unittest.TestCase):
     def test_place_number_bathrooms(self):
         new_place = Place()
         number_bathrooms = getattr(new_place, "number_bathrooms")
-        self.assertIsInstance(number_bathrooms, str)
+        self.assertIsInstance(number_bathrooms, int)
     
     def test_place_max_guest(self):
         new_place = Place()
@@ -73,7 +73,7 @@ class TestPlace(unittest.TestCase):
     def test_place_amenity_ids(self):
         new_place = Place()
         amenity_ids = getattr(new_place, "amenity_ids")
-        self.assertIsInstance(amenity_ids, str)
+        self.assertIsInstance(amenity_ids, list)
 
 if __name__ == '__main__':
     unittest.main()

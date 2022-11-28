@@ -20,7 +20,7 @@ class TestState(unittest.TestCase):
     def test_state_name(self):
         new_state = State()
         name = getattr(new_state, "name")
-        self.assertIsInstance(new_state, str)
+        self.assertIsInstance(name, str)
 
 
 if __name__ == '__main__':
