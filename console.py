@@ -124,7 +124,6 @@ class HBNBCommand(cmd.Cmd):
         '''
         args = args.split()
         objects = storage.all()
-        existing_key = args[0] + "." + args[1]
 
         if not args or len(args) == 0 or args[0] == "":
             print("** class name missing **")
@@ -143,6 +142,7 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             for key, value in objects.items():
+                existing_key = args[0] + "." + args[1]
                 if key == existing_key:
                     attribute = args[3].split('"')
                     try:
@@ -155,8 +155,8 @@ class HBNBCommand(cmd.Cmd):
                         return (float)
                     except ValueError:
                         return (str)
-                    objects[key].__dict__[args[2]] = (t)(arrtibute[1])
-                    objects[key].updated_at = datetime.now()
+                    objects[existing_key].__dict__[args[2]] = (t)(arrtibute[1])
+                    objects[existing_key].updated_at = datetime.now()
                     storage.save()
                     return
                 else:
