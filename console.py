@@ -168,7 +168,6 @@ class HBNBCommand(cmd.Cmd):
         args = args.replace(",", "")
         args = args.split(".")
 
-
         if args[0] not in class_list:
             print("** class doesn't exist **")
 
@@ -185,12 +184,12 @@ class HBNBCommand(cmd.Cmd):
                 cmd_arg = args[0] + " " + args[2] + " " + args[3]
                 cmd = command[args[1]]
                 cmd(cmd_arg)
-            
+
             elif len(args) == 6:
-                cmd_arg = args[0] + " " + args[2] + " " + args[3] + " " + args[4]
+                cmd_arg = args[0] + " " + args[2]
+                + " " + args[3] + " " + args[4]
                 cmd = command[args[1]]
                 cmd(cmd_arg)
-
 
     def do_count(self, args):
         count = 0
