@@ -47,8 +47,8 @@ class TestFileStorage(unittest.TestCase):
     def test_FileStorage_save(self):
         '''
         Tests save() method'''
-        bm = BaseModel
-        fs = FileStorage
+        bm = BaseModel()
+        fs = FileStorage()
         fs.new(bm)
         fs.save()
         self.assertEqual(os.path.exists('file.json'), True)
