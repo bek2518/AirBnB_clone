@@ -63,6 +63,7 @@ class TestFileStorage(unittest.TestCase):
         fs.save()
         dictionary = fs.reload()
         self.assertTrue(dictionary is fs.reload())
+
     def test_FileStorage_reload_1(self):
         fs = FileStorage()
         try:
