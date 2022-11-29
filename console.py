@@ -181,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
                 cmd(cmd_arg)
 
             elif len(args) == 5:
-                cmd_arg = args[0] + " " + args[2] + " " + args[3]
+                cmd_arg = args[0] + ", " + args[2] + ", " + args[3]
                 cmd = command[args[1]]
                 cmd(cmd_arg)
 
