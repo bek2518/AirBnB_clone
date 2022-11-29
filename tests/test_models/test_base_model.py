@@ -9,17 +9,17 @@ from models.base_model import BaseModel
 class TestBaseModel(unittest.TestCase):
     ''' Test case for BaseModel class'''
 
+
     def test_base_model(self):
         bm = BaseModel()
         self.assertIsInstance(bm, BaseModel)
     
     def test_base_model_docs(self):
-        bm = BaseModel()
-        self.assertIsNotNone(bm.__doc__)
-        self.assertIsNotNone(bm.__init__.__doc__)
-        self.assertIsNotNone(bm.__str__.__doc__)
-        self.assertIsNotNone(bm.save.__doc__)
-        self.assertIsNotNone(bm.to_dict.__doc__)
+        self.assertIsNotNone(BaseModel.__doc__)
+        self.assertIsNotNone(BaseModel.__init__.__doc__)
+        self.assertIsNotNone(BaseModel.__str__.__doc__)
+        self.assertIsNotNone(BaseModel.save.__doc__)
+        self.assertIsNotNone(BaseModel.to_dict.__doc__)
 
     def test_base_model_id(self):
         bm1 = BaseModel()
