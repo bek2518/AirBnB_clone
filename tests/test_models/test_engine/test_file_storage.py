@@ -63,6 +63,13 @@ class TestFileStorage(unittest.TestCase):
         fs.save()
         dictionary = fs.reload()
         self.assertTrue(dictionary is fs.reload())
+    def test_FileStorage_reload_1(self):
+        fs = FileStorage()
+        try:
+            fs.reload()
+            self.assertTrue(True)
+        except Exception:
+            self.assertTrue(False)
 
 if __name__ == '__main__':
     unittest.main()
