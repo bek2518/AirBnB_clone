@@ -40,6 +40,10 @@ class TestBaseModel(unittest.TestCase):
         old = bm.updated_at
         bm.save()
         self.assertNotEqual(bm.updated_at, old)
+    
+    def test_base_model_to_dict(self):
+        bm = BaseModel()
+        self.assertEqual("<class 'dict'>", str(type(bm.to_dict())))
 
 
 if __name__ == '__main__':
