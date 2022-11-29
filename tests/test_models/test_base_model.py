@@ -35,6 +35,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(bm, "created_at"))
         self.assertTrue(hasattr(bm, "updated_at"))
 
+    def test_base_model_save(self):
+        bm = BaseModel()
+        old = bm.updated_at
+        bm.save()
+        self.assertNotEqual(bm.updated_at, old)
+
 
 if __name__ == '__main__':
     unittest.main()
