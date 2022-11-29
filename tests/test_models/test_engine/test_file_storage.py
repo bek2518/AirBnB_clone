@@ -39,16 +39,17 @@ class TestFileStorage(unittest.TestCase):
         '''
         Tests new() method
         '''
-        user = User
         fs = FileStorage()
-        fs.new(user)
+        fs.new(self.user)
         self.assertIsNotNone(fs.all())
 
     def test_FileStorage_save(self):
         '''
         Tests save() method'''
+        bm = BaseModel
         fs = FileStorage
-        fs.save(fs)
+        fs.new(bm)
+        fs.save()
         self.assertEqual(os.path.exists('file.json'), True)
 
     def test_FileStorage_reload(self):
