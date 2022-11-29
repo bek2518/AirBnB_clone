@@ -43,7 +43,7 @@ class TestFileStorage(unittest.TestCase):
         fs = FileStorage()
         fs.new(self.user)
         self.assertIsNotNone(fs.all())
-    
+
     def test_FileStorage_save(self):
         '''
         Tests save() method'''
