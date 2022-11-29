@@ -34,6 +34,8 @@ class TestBaseModel(unittest.TestCase):
         bm = BaseModel()
         self.assertTrue(hasattr(bm, "created_at"))
         self.assertTrue(hasattr(bm, "updated_at"))
+        self.assertEqual("<class 'str'>", str(type((bm.to_dict())["created_at"])))
+        self.assertEqual("<class 'str'>", str(type((bm.to_dict())["updated_at"])))
 
     def test_base_model_save(self):
         bm = BaseModel()
@@ -44,6 +46,9 @@ class TestBaseModel(unittest.TestCase):
     def test_base_model_to_dict(self):
         bm = BaseModel()
         self.assertEqual("<class 'dict'>", str(type(bm.to_dict())))
+        self.assertEqual("BaseModel", (bm.to_dict())["__class__"])
+        self.assertEqual("<class 'str'>", str(type((bm.to_dict())["created_at"])))
+        self.assertEqual("<class 'str'>", str(type((bm.to_dict())["updated_at"])))
 
 
 if __name__ == '__main__':
