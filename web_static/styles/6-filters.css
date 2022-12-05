@@ -26,7 +26,7 @@ button:hover {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
-    width: 25%;
+    width: 12.5%;
     border-right: 1px solid #DDDDDD;
     position: relative;
     margin-left: 45px;
@@ -36,7 +36,7 @@ button:hover {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
-    width: 25%;
+    width: 12.5%;
     margin-left: 45px;
     border-right: 1px solid #DDDDDD;
 }
