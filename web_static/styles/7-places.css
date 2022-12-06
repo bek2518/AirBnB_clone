@@ -1,10 +1,12 @@
 .places {
-    position: relative;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .places h1 {
     font-size: 30px;
-    text-align: left;
+    width: 100%;
 }
 
 .places article {
@@ -15,10 +17,10 @@
     border: 1px solid #FF5A5F;
     border-radius: 4px;
     text-align: center;
+    position: relative;
 }
 
 .places h2 {
     font-size: 30px;
-    position: center;
-    margin: auto;
+    display: inline-block;
 }
