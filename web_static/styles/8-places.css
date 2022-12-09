@@ -2,17 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 30px auto;
+    text-align:  center;
 }
 
-.places h1 {
+h1 {
     display: block;
     text-align: left;
     font-size: 30px;
     width: 100%;
+    float: left;
 }
 
-.places article {
+article {
     display: inline-block;
     width: 390px;
     padding: 20px;
@@ -23,9 +24,10 @@
     position: relative;
 }
 
-.places h2 {
+article h2 {
     font-size: 30px;
     display: inline-block;
+    padding: 0px;
 }
 
 .price_by_night {
