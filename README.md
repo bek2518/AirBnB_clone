@@ -12,6 +12,7 @@ The Command Interpreter will be able to manage the objects of our project:
 * Destroy an object
 
 The shell should work like:
+```
 $ ./console.py
 (hbnb) help
 
@@ -27,5 +28,4 @@ count
 
         Prints all representation of all instances
         based or not on the class name
-Documented commands (type help <topic>):
-
+```
